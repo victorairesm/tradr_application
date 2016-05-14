@@ -15,6 +15,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import br.com.victor.tradr.R;
+import br.com.victor.tradr.model.Carro;
 import br.com.victor.tradr.model.Produto;
 
 
@@ -56,10 +57,10 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ProdutosViewHo
         // Atualiza a view
         Produto c = produtos.get(position);
 
-        holder.tNome.setText(c.nome);
+        holder.tNome.setText(c.getNome());
         holder.progress.setVisibility(View.VISIBLE);
 
-        Picasso.with(context).load(c.urlFoto).fit().into(holder.img, new Callback() {
+        Picasso.with(context).load(c.getUrlFoto()).fit().into(holder.img, new Callback() {
             @Override
             public void onSuccess() {
                 holder.progress.setVisibility(View.GONE);

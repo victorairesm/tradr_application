@@ -86,11 +86,11 @@ public class FeedFragment extends BaseFragment {
             //busca os carros em background, em uma thread exclusiva para esta tarefa.
             try {
                 try {
-                    Thread.sleep(5000);
+                    Thread.sleep(1500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                return CarroGetJSON.getCarros("http://10.0.54.249:8080/rest/carros");
+                return CarroGetJSON.getCarros("http://192.168.0.13:8084/rest/carros");
             } catch (IOException e) {
                 e.printStackTrace();
                 Log.d(TAG, "Exceção ao obter a lista de carros, método .doInBackground()");
