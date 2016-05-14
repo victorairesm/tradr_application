@@ -14,7 +14,7 @@ import victor.lib.utils.HttpHelper;
 
 /**
  *  Esta classe realiza o "parser" dos dados oriundos do web service no formato JSON para uma List.
- *  @author Vagner Pinto da Silva, baseado em Lecheta(2015).
+ *  @author Vagner Pinto da Silva, baseado em Lecheta(2015)..
  */
 
 
