@@ -86,7 +86,7 @@ public class FeedFragment extends BaseFragment {
             //busca os carros em background, em uma thread exclusiva para esta tarefa.
             try {
                 try {
-                    Thread.sleep(1500);
+                    Thread.sleep(1500); //Faz aparecer por 1,5 segundos a ProgressBar para fins de teste
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
