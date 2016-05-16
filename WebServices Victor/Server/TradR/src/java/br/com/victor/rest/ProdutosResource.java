@@ -5,7 +5,7 @@
  */
 package br.com.victor.rest;
 
-import br.com.victor.domain.Produto;
+import model.Produto;
 import br.com.victor.domain.ProdutoService;
 import br.com.victor.domain.Response;
 import java.util.List;
@@ -36,8 +36,8 @@ public class ProdutosResource {
 	}
 
 	@GET
-	@Path("{id}")
-	public Produto get(@PathParam("id") long id) {
+	@Path("{id_produto}")
+	public Produto get(@PathParam("id_produto") long id) {
 		Produto c = produtoService.getProduto(id);
 		return c;
 	}
@@ -57,8 +57,8 @@ public class ProdutosResource {
 	}
 
 	@DELETE
-	@Path("{id}")
-	public Response delete(@PathParam("id") long id) {
+	@Path("{id_produto}")
+	public Response delete(@PathParam("id_produto") long id) {
 		produtoService.delete(id);
 		return Response.Ok("Produto deletado com sucesso");
 	}

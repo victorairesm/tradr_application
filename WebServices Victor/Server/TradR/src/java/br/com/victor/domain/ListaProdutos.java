@@ -5,6 +5,7 @@
  */
 package br.com.victor.domain;
 
+import model.Produto;
 import java.io.Serializable;
 import java.util.List;
 import javax.xml.bind.annotation.XmlElement;

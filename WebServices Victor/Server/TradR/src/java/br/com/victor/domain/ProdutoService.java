@@ -5,6 +5,8 @@
  */
 package br.com.victor.domain;
 
+import dao.ProdutoDAO;
+import model.Produto;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;

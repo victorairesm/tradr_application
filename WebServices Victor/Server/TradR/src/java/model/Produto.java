@@ -1,4 +1,4 @@
-package br.com.victor.domain;
+package model;
 
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -8,15 +8,18 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author aluno
  */
 @XmlRootElement
-public class Produto implements Serializable{  
-    	private static final long serialVersionUID = 1L;
-	private Long id;
-	private Long categoria;
-        private Long estado;
-        private Double valor;
-	private String nome;
-	private String descricao;
-	private String urlFoto;
+public class Produto implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    private Long id;
+    private Long estado;
+    private Double valor;
+    private String nome;
+    private String descricao;
+    private String urlFoto;
+    //test
+    private Long categoria;
+    private Long cpf;
 
     public Long getId() {
         return id;
@@ -73,9 +76,17 @@ public class Produto implements Serializable{
     public void setUrlFoto(String urlFoto) {
         this.urlFoto = urlFoto;
     }
-    
-    	@Override
-	public String toString() {
-		return "Produto [Id: " + id + ", Nome: " + nome + ", Categoria: " + categoria + ", Estado: " + estado + ", Valor: " + valor + ", Descrição: " + descricao + ", UrlFoto: " + urlFoto + "]";
-	}
+
+    public Long getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(Long cpf) {
+        this.cpf = cpf;
+    }
+
+    @Override
+    public String toString() {
+        return "Produto [Id: " + id + ", Nome: " + nome + ", Categoria: " + categoria + ", Estado: " + estado + ", Valor: " + valor + ", Descrição: " + descricao + ", UrlFoto: " + urlFoto + "]";
+    }
 }

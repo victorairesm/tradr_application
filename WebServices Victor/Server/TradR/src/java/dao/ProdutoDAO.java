@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.victor.domain;
+package dao;
 
+import model.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,7 +26,7 @@ public class ProdutoDAO extends BaseDAO{
         try {
             conn = getConnection();
             System.out.println("Entrou no post.");
-            stmt = conn.prepareStatement("select * from produto where id=?");
+            stmt = conn.prepareStatement("select * from produto where id_produto=?");
             stmt.setLong(1, id);
             ResultSet rs = stmt.executeQuery();
             System.out.println("Entrou no post.");
@@ -122,13 +123,14 @@ public class ProdutoDAO extends BaseDAO{
 
     public Produto createProduto(ResultSet rs) throws SQLException {
         Produto p = new Produto();
-        p.setId(rs.getLong("id"));
-        p.setCategoria(rs.getLong("categoria"));
+        p.setId(rs.getLong("id_produto"));
         p.setEstado(rs.getLong("estado"));
         p.setValor(rs.getDouble("valor"));
         p.setNome(rs.getString("nome"));
         p.setDescricao(rs.getString("descricao"));
         p.setUrlFoto(rs.getString("urlFoto"));
+        p.setCategoria(rs.getLong("id_categoria"));
+        p.setCpf(rs.getLong("cpf"));
         return p;
     }
 
@@ -140,7 +142,7 @@ public class ProdutoDAO extends BaseDAO{
             if (p.getId() == null) {
                 stmt = conn.prepareStatement("insert into produto (categoria,estado,valor,nome,descricao,urlFoto) VALUES(?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
             } else {
-                stmt = conn.prepareStatement("update produto set categoria=?,estado=?,valor=?,nome=?,descricao=?,urlFoto=? where id=?");
+                stmt = conn.prepareStatement("update produto set categoria=?,estado=?,valor=?,nome=?,descricao=?,urlFoto=? where id_produto=?");
             }
             stmt.setLong(1, p.getCategoria());
             stmt.setLong(2, p.getEstado());
@@ -186,7 +188,7 @@ public class ProdutoDAO extends BaseDAO{
         PreparedStatement stmt = null;
         try {
             conn = getConnection();
-            stmt = conn.prepareStatement("delete from produto where id=?");
+            stmt = conn.prepareStatement("delete from produto where id_produto=?");
             stmt.setLong(1, id);
             int count = stmt.executeUpdate();
             boolean ok = count > 0;
