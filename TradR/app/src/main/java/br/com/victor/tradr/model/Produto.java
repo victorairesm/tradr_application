@@ -16,6 +16,7 @@ public class Produto implements Serializable {
     private String nome;
     private String descricao;
     private String urlFoto;
+    private Long cpf;
 
     public Long getId() {
         return id;
@@ -73,8 +74,12 @@ public class Produto implements Serializable {
         this.urlFoto = urlFoto;
     }
 
+    public Long getCpf() {return cpf;}
+
+    public void setCpf(Long cpf) {this.cpf = cpf;}
+
     @Override
     public String toString() {
-        return "Produto [Id: " + getId() + ", Nome: " + getNome() + ", Categoria: " + getCategoria() + ", Estado: " + getEstado() + ", Valor: " + getValor() + ", Descrição: " + getDescricao() + ", UrlFoto: " + getUrlFoto() + "]";
+        return "Produto [Id: " + getId() + ", Nome: " + getNome() + ", Categoria: " + getCategoria() + ", Estado: " + getEstado() + ", Valor: " + getValor() + ", Descrição: " + getDescricao() + ", UrlFoto: " + getUrlFoto() +", Cpf: " + getCpf() +  "]";
     }
 }

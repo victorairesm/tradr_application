@@ -19,9 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.victor.tradr.R;
-import br.com.victor.tradr.adapter.CarroAdapter;
-import br.com.victor.tradr.model.Carro;
-import br.com.victor.tradr.model.CarroGetJSON;
+import br.com.victor.tradr.adapter.FeedAdapter;
+import br.com.victor.tradr.model.Produto;
+import br.com.victor.tradr.model.ProdutoGetJSON;
 import br.com.victor.tradr.util.AndroidUtils;
 
 public class FeedFragment extends BaseFragment {
@@ -61,7 +61,7 @@ public class FeedFragment extends BaseFragment {
 
 
         if (AndroidUtils.isNetworkAvailable(getContext())) { //se houver conexão com a internet, wi-fi ou 3G ...
-            new GetCarrosTask().execute(); //cria uma instância de AsyncTask a executa
+            new GetProdutosTask().execute(); //cria uma instância de AsyncTask a executa
         } else {
             AndroidUtils.alertDialog(getContext(), "Alerta de conectividade.", "Não há conexão com a internet. Vefirique se você ligou o wi-fi ou os dados móveis.");
         }
@@ -73,7 +73,7 @@ public class FeedFragment extends BaseFragment {
         Classe interna que extende uma AsyncTask.
         Lembrando: A AsyncTask gerencia a thread que acessa os dados na internet
      */
-    private class GetCarrosTask extends AsyncTask<Void, Void, List<Carro>> {
+    private class GetProdutosTask extends AsyncTask<Void, Void, List<Produto>> {
 
         @Override
         protected void onPreExecute() {
@@ -82,7 +82,7 @@ public class FeedFragment extends BaseFragment {
         }
 
         @Override
-        protected List<Carro> doInBackground(Void... params) {
+        protected List<Produto> doInBackground(Void... params) {
             //busca os carros em background, em uma thread exclusiva para esta tarefa.
             try {
                 try {
@@ -90,21 +90,21 @@ public class FeedFragment extends BaseFragment {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                return CarroGetJSON.getCarros("http://192.168.0.13:8084/rest/carros");
+                return ProdutoGetJSON.getProdutos("http://192.168.0.13:8084/rest/produtos");
             } catch (IOException e) {
                 e.printStackTrace();
-                Log.d(TAG, "Exceção ao obter a lista de carros, método .doInBackground()");
+                Log.d(TAG, "Exceção ao obter a lista de produtos, método .doInBackground()");
                 return null;
             }
         }
 
         @Override
-        protected void onPostExecute(List<Carro> carros) {
-            super.onPostExecute(carros);
-            if (carros != null) {
-                Log.d(TAG, "Quantidade de carros no onPostExecute(): " + carros.size());
+        protected void onPostExecute(List<Produto> produtos) {
+            super.onPostExecute(produtos);
+            if (produtos != null) {
+                Log.d(TAG, "Quantidade de produtos no onPostExecute(): " + produtos.size());
                 //atualiza a view na UIThread
-                recyclerView.setAdapter(new CarroAdapter(getContext(), carros, onClickCarro()));
+                recyclerView.setAdapter(new FeedAdapter(getContext(), produtos, onClickProduto()));
                 swipeRefreshLayout.setRefreshing(false); //para a animação da swipeRefrech
                 progressBar.setVisibility(View.INVISIBLE); //faz com que a ProgressBar desapareça para o usuário
             }else{
@@ -119,12 +119,12 @@ public class FeedFragment extends BaseFragment {
     /*
         Este método utiliza a interface declarada na classe PlanetaAdapter para tratar o evento onClick do item da lista.
      */
-    protected CarroAdapter.CarroOnClickListener onClickCarro() {
+    protected FeedAdapter.ProdutoOnClickListener onClickProduto() {
         //chama o contrutor da interface (implícito) para cria uma instância da interface declarada no adaptador.
-        return new CarroAdapter.CarroOnClickListener() {
+        return new FeedAdapter.ProdutoOnClickListener() {
             // Aqui trata o evento onItemClick.
             @Override
-            public void onClickCarro(View view, int idx) {
+            public void onClickProduto(View view, int idx) {
                 Toast.makeText(getContext(), "Você clicou no item da RecyclerView.", Toast.LENGTH_LONG).show();
             }
         };
@@ -141,10 +141,10 @@ public class FeedFragment extends BaseFragment {
             public void onRefresh() {
                 if (AndroidUtils.isNetworkAvailable(getContext())) { //se houver conexão com a internet, wi-fi ou 3G ...
                     if (AndroidUtils.isNetworkAvailable(getContext())) { //se houver conexão com a internet, wi-fi ou 3G ...
-                        new GetCarrosTask().execute(); //cria uma instância de AsyncTask
+                        new GetProdutosTask().execute(); //cria uma instância de AsyncTask
                     } else {
                         AndroidUtils.alertDialog(getContext(), "Alerta de conectividade.", "Não há conexão com a internet. Vefirique se você ligou o wi-fi ou os dados móveis.");
-                        recyclerView.setAdapter(new CarroAdapter(getContext(), new ArrayList<Carro>(), onClickCarro()));
+                        recyclerView.setAdapter(new FeedAdapter(getContext(), new ArrayList<Produto>(), onClickProduto()));
                     }
                 }
             }
