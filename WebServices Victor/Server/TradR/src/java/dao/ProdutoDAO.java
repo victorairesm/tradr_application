@@ -5,6 +5,7 @@
  */
 package dao;
 
+import com.mysql.jdbc.log.Log;
 import model.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -140,19 +141,20 @@ public class ProdutoDAO extends BaseDAO{
         try {
             conn = getConnection();
             if (p.getId() == null) {
-                stmt = conn.prepareStatement("insert into produto (categoria,estado,valor,nome,descricao,urlFoto) VALUES(?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+                stmt = conn.prepareStatement("insert into produto (id_categoria,cpf,estado,valor,nome,descricao,urlFoto) VALUES(?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
             } else {
-                stmt = conn.prepareStatement("update produto set categoria=?,estado=?,valor=?,nome=?,descricao=?,urlFoto=? where id_produto=?");
+                stmt = conn.prepareStatement("update produto set id_categoria=?,cpf=?,estado=?,valor=?,nome=?,descricao=?,urlFoto=? where id_produto=?");
             }
             stmt.setLong(1, p.getCategoria());
-            stmt.setLong(2, p.getEstado());
-            stmt.setDouble(3, p.getValor());
-            stmt.setString(4, p.getNome());
-            stmt.setString(5, p.getDescricao());
-            stmt.setString(6, p.getUrlFoto());
+            stmt.setLong(2, p.getCpf());
+            stmt.setLong(3, p.getEstado());
+            stmt.setDouble(4, p.getValor());
+            stmt.setString(5, p.getNome());
+            stmt.setString(6, p.getDescricao());
+            stmt.setString(7, p.getUrlFoto());
             if (p.getId() != null) {
                 // Update
-                stmt.setLong(7, p.getId());
+                stmt.setLong(8, p.getId());
             }
             int count = stmt.executeUpdate();
             if (count == 0) {

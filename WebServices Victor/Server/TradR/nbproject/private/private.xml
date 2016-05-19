@@ -5,6 +5,11 @@
         <group>
             <file>file:/C:/Users/victo/Desktop/Projetos/WebServices%20Victor/Server/TradR/src/java/model/Usuario.java</file>
             <file>file:/C:/Users/victo/Desktop/Projetos/WebServices%20Victor/Server/TradR/src/java/model/Troca.java</file>
+            <file>file:/C:/Users/victo/Desktop/Projetos/WebServices%20Victor/Server/TradR/src/java/br/com/victor/rest/ProdutosResource.java</file>
+            <file>file:/C:/Users/victo/Desktop/Projetos/WebServices%20Victor/Server/TradR/src/java/dao/BaseDAO.java</file>
+            <file>file:/C:/Users/victo/Desktop/Projetos/WebServices%20Victor/Server/TradR/src/java/br/com/victor/domain/Response.java</file>
+            <file>file:/C:/Users/victo/Desktop/Projetos/WebServices%20Victor/Server/TradR/src/java/dao/ProdutoDAO.java</file>
+            <file>file:/C:/Users/victo/Desktop/Projetos/WebServices%20Victor/Server/TradR/src/java/br/com/victor/domain/ProdutoService.java</file>
             <file>file:/C:/Users/victo/Desktop/Projetos/WebServices%20Victor/Server/TradR/src/java/br/com/victor/rest/GsonMessageBodyHandler.java</file>
             <file>file:/C:/Users/victo/Desktop/Projetos/WebServices%20Victor/Server/TradR/src/java/model/Categoria.java</file>
         </group>
