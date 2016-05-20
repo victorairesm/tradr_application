@@ -3,9 +3,12 @@ package br.com.victor.tradr;
 import android.app.Application;
 import android.util.Log;
 
+import com.squareup.otto.Bus;
+
 public class TradRApplication extends Application {
     private static final String TAG = "TradRApplication";
     private static TradRApplication instance = null;
+    private Bus bus = new Bus();
 
     public static TradRApplication getInstance() {
         return instance; // Singleton
@@ -23,5 +26,9 @@ public class TradRApplication extends Application {
     public void onTerminate() {
         super.onTerminate();
         Log.d(TAG, "TradRApplication.onTerminate()");
+    }
+
+    public Bus getBus() {
+        return bus;
     }
 }

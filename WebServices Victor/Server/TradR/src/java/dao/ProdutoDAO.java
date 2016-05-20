@@ -72,22 +72,25 @@ public class ProdutoDAO extends BaseDAO{
         return produtos;
     }
 
-    public List<Produto> findByCategoria(String tipo) throws SQLException {
+    public List<Produto> findByCategoria(Long tipo) throws SQLException {
         System.out.println("Entrou no post.");
         List<Produto> produtos = new ArrayList<>();
         Connection conn = null;
         PreparedStatement stmt = null;
         try {
             conn = getConnection();
-            stmt = conn.prepareStatement("select * from produto where categoria = ?");
-            stmt.setString(1, tipo);
+            stmt = conn.prepareStatement("select * from produto where id_categoria = ?");
+            stmt.setLong(1, tipo);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Produto c = createProduto(rs);
                 produtos.add(c);
             }
             rs.close();
-        } finally {
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        finally {
             if (stmt != null) {
                 stmt.close();
             }

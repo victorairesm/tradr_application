@@ -20,9 +20,9 @@ import java.util.List;
 
 import br.com.victor.tradr.R;
 import br.com.victor.tradr.adapter.FeedAdapter;
-import br.com.victor.tradr.model.Produto;
-import br.com.victor.tradr.model.ProdutoGetJSON;
-import br.com.victor.tradr.util.AndroidUtils;
+import br.com.victor.tradr.domain.Produto;
+import br.com.victor.tradr.domain.ProdutoService;
+import victor.lib.utils.AndroidUtils;
 
 public class FeedFragment extends BaseFragment {
 
@@ -90,7 +90,7 @@ public class FeedFragment extends BaseFragment {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                return ProdutoGetJSON.getProdutos("http://192.168.0.13:8084/rest/produtos");
+                return ProdutoService.getProdutos("http://192.168.0.13:8084/rest/produtos");
             } catch (IOException e) {
                 e.printStackTrace();
                 Log.d(TAG, "Exceção ao obter a lista de produtos, método .doInBackground()");

@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import br.com.victor.tradr.R;
-import br.com.victor.tradr.model.Produto;
+import br.com.victor.tradr.domain.Produto;
 
 
 /**

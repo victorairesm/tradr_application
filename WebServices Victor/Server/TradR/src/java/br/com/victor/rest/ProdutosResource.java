@@ -44,7 +44,7 @@ public class ProdutosResource {
 
 	@GET
 	@Path("/categoria/{categoria}")
-	public List<Produto> getByTipo(@PathParam("categoria") String categoria) {
+	public List<Produto> getByTipo(@PathParam("categoria") Long categoria) {
 		List<Produto> produtos = produtoService.findByGategoria(categoria);
 		return produtos;
 	}

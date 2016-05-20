@@ -67,7 +67,7 @@ public class ProdutoService {
         }
     }
 
-    public List<Produto> findByGategoria(String categoria) {
+    public List<Produto> findByGategoria(Long categoria) {
         try {
             return db.findByCategoria(categoria);
         } catch (SQLException e) {

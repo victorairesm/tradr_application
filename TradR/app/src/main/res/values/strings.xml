@@ -26,9 +26,13 @@ Versao %s<br><br>
     <!-- L -->
     <string name="perfil">Perfil</string>
 
+    <!-- M -->
+    <string name="msg_error_campo_obrigatorio">Campo obrigatório.</string>
+
     <!-- N -->
     <string name="nav_drawer_username">Victor Mendonça</string>
     <string name="nav_drawer_email">victorairesm@gmail.com</string>
+    <string name="novo_produto">Novo Produto</string>
 
     <!-- O -->
     <string name="ok">OK</string>
@@ -36,6 +40,16 @@ Versao %s<br><br>
     <!-- S -->
     <string name="sobre">Sobre</string>
     <string name="ajuda">Ajuda</string>
+
+    <!-- EditProduto -->
+    <string name="categoria">Categoria</string>
+    <string name="usado">Usado</string>
+    <string name="novo">Novo</string>
+    <string name="seminovo">Semi-novo</string>
+    <string name="prod_nome">O que é?</string>
+    <string name="prod_desc">Descreva seu produto:</string>
+    <string name="valor">Em quanto você avalia?</string>
+    <string name="transition_key">img_transition_key</string>
 
     <!-- V -->
     <string name="vazio" />

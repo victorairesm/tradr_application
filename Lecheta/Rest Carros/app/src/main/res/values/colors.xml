@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Cores do Material Theme -->
+    <color name="primary">#3F51B5</color>
+    <color name="primary_dark">#303F9F</color>
+    <color name="accent">#FF4081</color>
+    <color name="control_highlight">#B3E5FC</color>
+
+    <!-- Cores -->
+    <color name="vermelho">#ff0000</color>
+    <color name="azul">#0000ff</color>
+    <color name="verde">#00ff00</color>
+    <color name="branco">#ffffff</color>
+    <color name="amarelo">#fff000</color>
+    <color name="cinza">#cccccc</color>
+
+    <!-- SwipeRefreshLayout -->
+    <color name="refresh_progress_1">#33B5E5</color>
+    <color name="refresh_progress_2">#99CC00</color>
+    <color name="refresh_progress_3">#CC0000</color>
+
+    <!-- Favoritos -->
+    <color name="favorito_on">#E91E63</color>
+    <color name="favorito_off">#cccccc</color>
+
+</resources>
