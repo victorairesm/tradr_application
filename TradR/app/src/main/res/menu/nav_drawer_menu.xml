@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <!-- Lista com o feed de produtos -->
+        <item
+            android:id="@+id/nav_item_feed"
+            android:checked="true"
+            android:icon="@mipmap/ic_drawer_feed"
+            android:title="@string/feed" />
+        <!-- Lista com os meus produtos -->
+        <item
+            android:id="@+id/nav_item_produtos"
+            android:checked="true"
+            android:icon="@mipmap/ic_drawer_produtos"
+            android:title="@string/produtos" />
+        <!-- Lista com as trocas -->
+        <item
+            android:id="@+id/nav_item_trocas"
+            android:checked="true"
+            android:icon="@mipmap/ic_drawer_trocas"
+            android:title="@string/trocas" />
+        <!-- Lista com o perfil -->
+        <item
+            android:id="@+id/nav_item_perfil"
+            android:checked="true"
+            android:icon="@mipmap/ic_drawer_perfil"
+            android:title="@string/perfil" />
+        <!-- WebView com informações de ajuda -->
+        <item
+            android:id="@+id/nav_item_ajuda"
+            android:icon="@mipmap/ic_drawer_produtos"
+            android:title="@string/ajuda" />
+        <!-- Tela de configurações -->
+        <item
+            android:id="@+id/nav_item_settings"
+            android:icon="@mipmap/ic_drawer_settings"
+            android:title="@string/configuracoes" />
+    </group>
+</menu>

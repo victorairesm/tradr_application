@@ -1,0 +1,53 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/card_viewAdapterFeed"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    app:cardElevation="3dp"
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="false"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardElevation="6dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tNomeAdapterFeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tDescAdapterFeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="6dp"
+            android:ellipsize="end"
+            android:textSize="16sp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/include_progress"
+                android:id="@+id/progressAdapterFeed" />
+
+            <ImageView
+                android:id="@+id/imgAdapterFeed"
+                android:layout_width="@dimen/img_produto_adapter_width"
+                android:layout_height="@dimen/img_produto_adapter_height"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="6dp"
+                android:src="@drawable/ferrari_ff" />
+        </FrameLayout>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
