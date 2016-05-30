@@ -28,8 +28,8 @@ android {
 
 repositories {
     maven {
-        url "C://Users//victo//Desktop//Projetos//TradR//utils"
-        //url "/home/aluno/Projetos/TradR/utils"
+        //url "C://Users//victo//Desktop//Projetos//TradR//utils"
+        url "/home/aluno/Projetos/TradR/utils"
     }
 }
 
