@@ -348,7 +348,7 @@ public class FeedFragment extends BaseFragment {
                 public void updateView(Object count) {
                     super.updateView(count);
                     // Mostra mensagem de sucesso
-                    snack(recyclerView, selectedProdutos.size() + " produtos excluídos com sucesso");
+                    snack(recyclerView, selectedProdutos.size() + " produto excluído com sucesso");
                     // Atualiza a lista de carros
                     //taskCarros(true);
                     // Atualiza a lista
@@ -378,7 +378,7 @@ public class FeedFragment extends BaseFragment {
             } else if (selectedProdutos.size() == 1) {
                 actionMode.setSubtitle("1 produto selecionado");
             } else if (selectedProdutos.size() > 1) {
-                actionMode.setSubtitle(selectedProdutos.size() + " produto selecionados");
+                actionMode.setSubtitle(selectedProdutos.size() + " produtos selecionados");
             }
         }
     }

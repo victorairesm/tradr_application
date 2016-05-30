@@ -35,14 +35,13 @@ import br.com.victor.tradr.util.CameraUtil;
 import victor.lib.utils.GooglePlayServicesHelper;
 
 /**
- * Fragment com form para editar o carro.
+ * Fragment com form para editar o produto.
  * <p>
- * Herda do CarroFragment para aproveitar a lógica de visualização.
+ * Herda do ProdutoFragment para aproveitar a lógica de visualização.
  */
 public class ProdutoEditFragment extends BaseFragment implements ProdutoActivity.ClickHeaderListener {
     // Camera Foto
     private CameraUtil camera = new CameraUtil();
-    private GooglePlayServicesHelper gps;
     private FragmentProdutoEditBinding binding;
 
     protected ImageView img;
@@ -83,12 +82,6 @@ public class ProdutoEditFragment extends BaseFragment implements ProdutoActivity
             camera.onCreate(savedInstanceState);
         }
 
-        // Ligar o Google Play Services
-        if (produto == null) {
-            // Se não existe carro, liga GPS
-            gps = new GooglePlayServicesHelper(getContext(), true);
-        }
-
         return view;
     }
 
@@ -119,7 +112,7 @@ public class ProdutoEditFragment extends BaseFragment implements ProdutoActivity
     }
 
     // Seta o tipo no RadioGroup
-    protected void setCategoria(Long categoria) {
+    protected void setCategoria(Integer categoria) {
         if (categoria == 1) {
             tCategoria.check(R.id.catUsado);
         } else if (categoria == 2) {
@@ -164,11 +157,19 @@ public class ProdutoEditFragment extends BaseFragment implements ProdutoActivity
 
             boolean formOk = validate(R.id.tNomeEdit, R.id.tDescEdit, R.id.tValor);
             if (formOk) {
+                Integer categoria = 0;
+                if(getCategoria().equals("usado")){
+                    categoria = 1;
+                } else if(getCategoria().equals("novo")) {
+                    categoria = 2;
+                } else if(getCategoria().equals("seminovo")) {
+                    categoria = 3;
+                }
                 // Validação de campos preenchidos
                 produto.nome = binding.tNomeEdit.getText().toString();
                 produto.descricao = binding.tDescEdit.getText().toString();
                 produto.valor = Double.parseDouble(binding.tValor.getText().toString());
-                produto.categoria = Long.valueOf(getCategoria());
+                produto.categoria = categoria;
 
                 Log.d(TAG, "Salvar produto na categoria: " + produto.categoria);
 

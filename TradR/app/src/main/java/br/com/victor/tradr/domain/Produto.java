@@ -8,7 +8,7 @@ public class Produto implements Serializable {
     private static final long serialVersionUID = 6601006766832473959L;
 
     public Long id;
-    public Long categoria;
+    public Integer categoria;
     public Long estado;
     public Double valor;
     public String nome;
