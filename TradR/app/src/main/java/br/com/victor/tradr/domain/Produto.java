@@ -1,6 +1,7 @@
 package br.com.victor.tradr.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @org.parceler.Parcel
 public class Produto implements Serializable {
@@ -15,6 +16,7 @@ public class Produto implements Serializable {
     public String descricao;
     public String urlFoto;
     public Long cpf;
+    public Date data;
     // Flag para a action bar de contexto
     public boolean selected;
     // Está favoritado sem vem do banco de dadosine

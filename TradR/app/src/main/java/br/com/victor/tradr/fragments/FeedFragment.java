@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.victor.tradr.R;
+import br.com.victor.tradr.activity.MainActivity;
 import br.com.victor.tradr.activity.ProdutoActivity;
 import br.com.victor.tradr.adapter.FeedAdapter;
 import br.com.victor.tradr.domain.Produto;
@@ -48,10 +49,11 @@ public class FeedFragment extends BaseFragment {
     // Action Bar de Contexto
     private ActionMode actionMode;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_feed, container, false);
+
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Feed");
 
         //configura a RecyclerView
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView); //mapeia o RecyclerView do layout.

@@ -8,12 +8,18 @@ package dao;
 import com.mysql.jdbc.log.Log;
 import model.Produto;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -107,7 +113,7 @@ public class ProdutoDAO extends BaseDAO{
         PreparedStatement stmt = null;
         try {
             conn = getConnection();
-            stmt = conn.prepareStatement("select * from produto order by id_produto");
+            stmt = conn.prepareStatement("select * from produto order by data_cadastro desc");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Produto c = createProduto(rs);
@@ -135,6 +141,7 @@ public class ProdutoDAO extends BaseDAO{
         p.setUrlFoto(rs.getString("urlFoto"));
         p.setCategoria(rs.getLong("id_categoria"));
         p.setCpf(rs.getLong("cpf"));
+        p.setData(new java.sql.Date(rs.getDate("data_cadastro").getTime()));
         return p;
     }
 
@@ -144,9 +151,9 @@ public class ProdutoDAO extends BaseDAO{
         try {
             conn = getConnection();
             if (p.getId() == null) {
-                stmt = conn.prepareStatement("insert into produto (id_categoria,cpf,estado,valor,nome,descricao,urlFoto) VALUES(?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+                stmt = conn.prepareStatement("insert into produto (id_categoria,cpf,estado,valor,nome,descricao,urlFoto,data_cadastro) VALUES(?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
             } else {
-                stmt = conn.prepareStatement("update produto set id_categoria=?,cpf=?,estado=?,valor=?,nome=?,descricao=?,urlFoto=? where id_produto=?");
+                stmt = conn.prepareStatement("update produto set id_categoria=?,cpf=?,estado=?,valor=?,nome=?,descricao=?,urlFoto=?,data_cadastro=? where id_produto=?");
             }
             stmt.setLong(1, p.getCategoria());
             stmt.setLong(2, p.getCpf());
@@ -155,6 +162,7 @@ public class ProdutoDAO extends BaseDAO{
             stmt.setString(5, p.getNome());
             stmt.setString(6, p.getDescricao());
             stmt.setString(7, p.getUrlFoto());
+            stmt.setDate(8, new Date(new java.util.Date().getTime()));
             if (p.getId() != null) {
                 // Update
                 stmt.setLong(8, p.getId());

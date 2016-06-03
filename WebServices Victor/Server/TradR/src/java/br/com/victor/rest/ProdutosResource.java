@@ -8,6 +8,9 @@ package br.com.victor.rest;
 import model.Produto;
 import br.com.victor.domain.ProdutoService;
 import br.com.victor.domain.Response;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import dao.ProdutoDAO;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -17,17 +20,27 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 /**
  *
- * @author victo
+ * @author victor
  */
 @Path("/produtos")
 @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 @Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
 public class ProdutosResource {
-    private ProdutoService produtoService = new ProdutoService();
+    @Context
+    private Gson gson;
+    private ProdutoService produtoService;
+    
+    private ProdutoDAO db = new ProdutoDAO();
+    
+    public ProdutosResource(){
+        gson = new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
+        produtoService = new ProdutoService();
+    }
 
 	@GET
 	public List<Produto> get() {

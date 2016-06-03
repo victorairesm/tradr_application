@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -17,9 +18,9 @@ public class Produto implements Serializable {
     private String nome;
     private String descricao;
     private String urlFoto;
-    //test
     private Long categoria;
     private Long cpf;
+    private Date data;
 
     public Long getId() {
         return id;
@@ -85,8 +86,17 @@ public class Produto implements Serializable {
         this.cpf = cpf;
     }
 
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
     @Override
     public String toString() {
         return "Produto [Id: " + id + ", Nome: " + nome + ", Categoria: " + categoria + ", Estado: " + estado + ", Valor: " + valor + ", Descrição: " + descricao + ", UrlFoto: " + urlFoto + "]";
     }
+
 }
