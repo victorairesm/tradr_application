@@ -26,7 +26,7 @@ import victor.lib.utils.HttpHelper;
 
 public class ProdutoService {
     private static final String TAG = "ProdutoService";
-    private static final String URL_BASE = "http://10.0.54.249:8080/rest/produtos";
+    private static final String URL_BASE = "http://192.168.0.13:8084/rest/produtos";
     private static final boolean LOG_ON = true;
 
     public static List<Produto> getProdutosByCategoria(Context context, String categoria) throws IOException {
@@ -172,7 +172,7 @@ public class ProdutoService {
         return true;
     }*/
 
-    // Retorna os carros favoritados
+    // Retorna os produtos favoritados
     /*public static List<Produto> getCarrosFromDB(Context context) throws IOException {
         ProdutoDB db = new ProdutoDB(context);
         try {

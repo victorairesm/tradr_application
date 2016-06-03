@@ -107,7 +107,7 @@ public class ProdutoDAO extends BaseDAO{
         PreparedStatement stmt = null;
         try {
             conn = getConnection();
-            stmt = conn.prepareStatement("select * from produto");
+            stmt = conn.prepareStatement("select * from produto order by id_produto");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Produto c = createProduto(rs);

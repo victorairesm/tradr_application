@@ -76,7 +76,7 @@ public class FeedFragment extends BaseFragment {
         taskProdutos(false);
     }
 
-    // Task para buscar os carros
+    // Task para buscar os tradr
     private class GetProdutosTask implements TaskListener<List<Produto>> {
         private String nome;
 
@@ -86,7 +86,7 @@ public class FeedFragment extends BaseFragment {
 
         @Override
         public List<Produto> execute() throws Exception {
-            // Busca os carros em background
+            // Busca os tradr em background
             //if (nome != null) {
             // É uma busca por nome
             //return ProdutoService.getProdutosByNome(getContext(), nome);
@@ -138,7 +138,7 @@ public class FeedFragment extends BaseFragment {
 
 /*        @Override
         protected List<Produto> doInBackground(Void... params) {
-            //busca os carros em background, em uma thread exclusiva para esta tarefa.
+            //busca os tradr em background, em uma thread exclusiva para esta tarefa.
             try {
                 try {
                     Thread.sleep(1500); //Faz aparecer por 1,5 segundos a ProgressBar para fins de teste
@@ -316,7 +316,7 @@ public class FeedFragment extends BaseFragment {
 
             @Override
             public void onDestroyActionMode(ActionMode mode) {
-                // Limpa o ActionMode e carros selecionados
+                // Limpa o ActionMode e tradr selecionados
                 actionMode = null;
                 for (Produto c : produtos) {
                     c.selected = false;
@@ -349,7 +349,7 @@ public class FeedFragment extends BaseFragment {
                     super.updateView(count);
                     // Mostra mensagem de sucesso
                     snack(recyclerView, selectedProdutos.size() + " produto excluído com sucesso");
-                    // Atualiza a lista de carros
+                    // Atualiza a lista de tradr
                     //taskCarros(true);
                     // Atualiza a lista
                     recyclerView.getAdapter().notifyDataSetChanged();
