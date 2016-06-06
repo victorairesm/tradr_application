@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -21,6 +22,7 @@ public class Produto implements Serializable {
     private Long categoria;
     private Long cpf;
     private Date data;
+    private Timestamp data_cadastro;
 
     public Long getId() {
         return id;
@@ -92,6 +94,14 @@ public class Produto implements Serializable {
 
     public void setData(Date data) {
         this.data = data;
+    }
+
+    public Timestamp getData_cadastro() {
+        return data_cadastro;
+    }
+
+    public void setData_cadastro(Timestamp data_cadastro) {
+        this.data_cadastro = data_cadastro;
     }
 
     @Override

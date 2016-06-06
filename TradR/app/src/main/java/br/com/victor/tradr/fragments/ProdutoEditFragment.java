@@ -32,7 +32,6 @@ import br.com.victor.tradr.domain.event.BusEvent;
 import br.com.victor.tradr.rest.Response;
 import br.com.victor.tradr.rest.ResponseWithURL;
 import br.com.victor.tradr.util.CameraUtil;
-import victor.lib.utils.GooglePlayServicesHelper;
 
 /**
  * Fragment com form para editar o produto.

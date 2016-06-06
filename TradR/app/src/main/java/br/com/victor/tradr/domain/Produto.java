@@ -1,6 +1,8 @@
 package br.com.victor.tradr.domain;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @org.parceler.Parcel
@@ -16,14 +18,15 @@ public class Produto implements Serializable {
     public String descricao;
     public String urlFoto;
     public Long cpf;
-    public Date data;
+    public Timestamp data;
+    public String hora;
     // Flag para a action bar de contexto
     public boolean selected;
     // Está favoritado sem vem do banco de dadosine
-    public boolean favorited;
+    public boolean marcar;
 
     @Override
     public String toString() {
-        return "Produto [Id: " + this.id + ", Nome: " + this.nome + ", Categoria: " + this.categoria + ", Estado: " + this.estado + ", Valor: " + this.valor + ", Descrição: " + this.descricao + ", UrlFoto: " + this.urlFoto +", Cpf: " + this.cpf +  "]";
+        return "Produto [Id: " + this.id + ", Nome: " + this.nome + ", Categoria: " + this.categoria + ", Estado: " + this.estado + ", Valor: " + this.valor + ", Descrição: " + this.descricao + ", UrlFoto: " + this.urlFoto +", Cpf: " + this.cpf + "Data: " + new SimpleDateFormat("dd/MM/yyyy kk:mm:ss").format(this.data) + "]";
     }
 }

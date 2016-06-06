@@ -36,7 +36,7 @@ public class GsonMessageBodyHandler implements MessageBodyWriter<Object>, Messag
 
 	private Gson getGson() {
 		if (gson == null) {
-			gson = new GsonBuilder().setPrettyPrinting().create();
+			gson = new GsonBuilder().setPrettyPrinting().setDateFormat("dd/MM/yyyy kk:mm:ss").create();
 		}
 		return gson;
 	}

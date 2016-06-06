@@ -141,7 +141,7 @@ public class ProdutoDAO extends BaseDAO{
         p.setUrlFoto(rs.getString("urlFoto"));
         p.setCategoria(rs.getLong("id_categoria"));
         p.setCpf(rs.getLong("cpf"));
-        p.setData(new java.sql.Date(rs.getDate("data_cadastro").getTime()));
+        p.setData_cadastro(new java.sql.Timestamp(rs.getTimestamp("data_cadastro").getTime()));
         return p;
     }
 
