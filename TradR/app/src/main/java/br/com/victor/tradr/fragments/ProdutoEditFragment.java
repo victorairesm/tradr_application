@@ -145,6 +145,7 @@ public class ProdutoEditFragment extends BaseFragment implements ProdutoActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+        Log.d("ActionSalvar", String.valueOf(R.id.action_salvar));
         if (id == R.id.action_salvar) {
 
 /*            if (produto == null) {

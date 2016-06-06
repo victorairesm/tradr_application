@@ -21,7 +21,6 @@ public class Produto implements Serializable {
     private String urlFoto;
     private Long categoria;
     private Long cpf;
-    private Date data;
     private Timestamp data_cadastro;
 
     public Long getId() {
@@ -86,14 +85,6 @@ public class Produto implements Serializable {
 
     public void setCpf(Long cpf) {
         this.cpf = cpf;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
     }
 
     public Timestamp getData_cadastro() {

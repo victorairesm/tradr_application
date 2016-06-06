@@ -19,7 +19,6 @@ public class Produto implements Serializable {
     public String urlFoto;
     public Long cpf;
     public Timestamp data;
-    public String hora;
     // Flag para a action bar de contexto
     public boolean selected;
     // Está favoritado sem vem do banco de dadosine
