@@ -18,7 +18,7 @@ public class BaseDAO {
 
 	protected Connection getConnection() throws SQLException {
 		// URL de conexão com o banco de dados
-		String url = "jdbc:postgresql://localhost:5432/produtos";
+		String url = "jdbc:postgresql://localhost:5432/tradr";
 		// Conecta utilizando a URL, usuário e senha.
 		Connection conn = DriverManager.getConnection(url, "postgres", "postgres");
 		return conn;

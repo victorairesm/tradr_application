@@ -22,8 +22,8 @@ import org.parceler.Parcels;
 
 import java.io.File;
 
-import br.com.victor.tradr.TradRApplication;
 import br.com.victor.tradr.R;
+import br.com.victor.tradr.TradRApplication;
 import br.com.victor.tradr.activity.ProdutoActivity;
 import br.com.victor.tradr.databinding.FragmentProdutoEditBinding;
 import br.com.victor.tradr.domain.Produto;
@@ -34,9 +34,9 @@ import br.com.victor.tradr.rest.ResponseWithURL;
 import br.com.victor.tradr.util.CameraUtil;
 
 /**
- * Fragment com form para editar o produto.
+ * Fragment com form para editar o carro.
  * <p>
- * Herda do ProdutoFragment para aproveitar a lógica de visualização.
+ * Herda do CarroFragment para aproveitar a lógica de visualização.
  */
 public class ProdutoEditFragment extends BaseFragment implements ProdutoActivity.ClickHeaderListener {
     // Camera Foto
@@ -44,8 +44,9 @@ public class ProdutoEditFragment extends BaseFragment implements ProdutoActivity
     private FragmentProdutoEditBinding binding;
 
     protected ImageView img;
-
-    protected RadioGroup tCategoria;
+    protected TextView tValor;
+    protected TextView tDescricao;
+    protected RadioGroup tEstado;
 
     private Produto produto;
 
@@ -86,7 +87,9 @@ public class ProdutoEditFragment extends BaseFragment implements ProdutoActivity
 
     protected void initViews(View view) {
         img = (ImageView) view.findViewById(R.id.imgAdapterFeed);
-        tCategoria = (RadioGroup) view.findViewById(R.id.radioTipo);
+        tEstado = (RadioGroup) view.findViewById(R.id.radioTipo);
+        tDescricao = (TextView) view.findViewById(R.id.tDescEdit);
+        tValor = (TextView) view.findViewById(R.id.tValorEdit);
     }
 
     private void setProduto(Produto c) {
@@ -100,9 +103,12 @@ public class ProdutoEditFragment extends BaseFragment implements ProdutoActivity
 //                    }
 //                });
             }
+
             // Data Binding
             binding.setProduto(c);
-            setCategoria(c.categoria);
+
+            setEstado(c.estado);
+
         }
 
         // Imagem do Header na Toolbar
@@ -111,13 +117,13 @@ public class ProdutoEditFragment extends BaseFragment implements ProdutoActivity
     }
 
     // Seta o tipo no RadioGroup
-    protected void setCategoria(Integer categoria) {
-        if (categoria == 1) {
-            tCategoria.check(R.id.catUsado);
-        } else if (categoria == 2) {
-            tCategoria.check(R.id.catNovo);
-        } else if (categoria == 3) {
-            tCategoria.check(R.id.catSemiNovo);
+    protected void setEstado(Long estado) {
+        if (estado == Long.valueOf(1)) {
+            tEstado.check(R.id.estadoUsado);
+        } else if (estado == Long.valueOf(2)) {
+            tEstado.check(R.id.estadoNovo);
+        } else if (estado == Long.valueOf(3)) {
+            tEstado.check(R.id.estadoSemiNovo);
         }
     }
 
@@ -145,31 +151,23 @@ public class ProdutoEditFragment extends BaseFragment implements ProdutoActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        Log.d("ActionSalvar", String.valueOf(R.id.action_salvar));
         if (id == R.id.action_salvar) {
 
-/*            if (produto == null) {
-                // Novo carro
-
+            if (produto == null) {
+                // Novo produto
                 produto = new Produto();
-                produto.categoria = Long.valueOf(1);
-            }*/
+                produto.urlFoto = "teste de url";
+                produto.cpf = Long.valueOf("02156230021");
+                produto.categoria = 1;
+            }
 
             boolean formOk = validate(R.id.tNomeEdit, R.id.tDescEdit, R.id.tValor);
             if (formOk) {
-                Integer categoria = 0;
-                if(getCategoria().equals("usado")){
-                    categoria = 1;
-                } else if(getCategoria().equals("novo")) {
-                    categoria = 2;
-                } else if(getCategoria().equals("seminovo")) {
-                    categoria = 3;
-                }
                 // Validação de campos preenchidos
                 produto.nome = binding.tNomeEdit.getText().toString();
                 produto.descricao = binding.tDescEdit.getText().toString();
                 produto.valor = Double.parseDouble(binding.tValor.getText().toString());
-                produto.categoria = categoria;
+                produto.estado = getEstado();
 
                 Log.d(TAG, "Salvar produto na categoria: " + produto.categoria);
 
@@ -182,19 +180,19 @@ public class ProdutoEditFragment extends BaseFragment implements ProdutoActivity
     }
 
     // Retorna o tipo em string conforme marcado no RadioGroup
-    protected String getCategoria() {
-        if (tCategoria != null) {
-            int id = tCategoria.getCheckedRadioButtonId();
+    protected Long getEstado() {
+        if (tEstado != null) {
+            int id = tEstado.getCheckedRadioButtonId();
             switch (id) {
-                case R.id.catUsado:
-                    return "usado";
-                case R.id.catNovo:
-                    return "novo";
-                case R.id.catSemiNovo:
-                    return "seminovo";
+                case R.id.estadoUsado:
+                    return Long.valueOf(1);
+                case R.id.estadoNovo:
+                    return Long.valueOf(2);
+                case R.id.estadoSemiNovo:
+                    return Long.valueOf(13);
             }
         }
-        return "usado";
+        return Long.valueOf(1);
     }
 
     private boolean validate(int... textViewIds) {
@@ -225,7 +223,7 @@ public class ProdutoEditFragment extends BaseFragment implements ProdutoActivity
                 }
                 // Salva o carro
                 Response response = ProdutoService.saveProduto(getContext(), produto);
-                //Response response = Retrofit.getCarroREST().saveProduto(carro);
+                //Response response = Retrofit.getCarroREST().saveCarro(carro);
                 return response;
             }
 
@@ -284,7 +282,6 @@ public class ProdutoEditFragment extends BaseFragment implements ProdutoActivity
 //        Intent intent = camera.open(fileName);
 //        startActivityForResult(intent, 0);
 //    }
-
 
     @Override
     public void onHeaderClicked() {

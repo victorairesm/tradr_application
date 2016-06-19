@@ -53,7 +53,7 @@ public class FeedFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_feed, container, false);
 
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Feed");
+        //((MainActivity) getActivity()).getSupportActionBar().setTitle("Feed");
 
         //configura a RecyclerView
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView); //mapeia o RecyclerView do layout.
@@ -101,7 +101,7 @@ public class FeedFragment extends BaseFragment {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                return ProdutoService.getProdutos();
+                return ProdutoService.getProdutos(getContext());
             } catch (IOException e) {
                 e.printStackTrace();
                 Log.d(TAG, "Exceção ao obter a lista de produtos, método .execute");

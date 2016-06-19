@@ -54,6 +54,7 @@ public class ProdutoService {
             db.save(produto);
             return true;
         } catch (SQLException e) {
+            System.out.println(e);
             return false;
         }
     }

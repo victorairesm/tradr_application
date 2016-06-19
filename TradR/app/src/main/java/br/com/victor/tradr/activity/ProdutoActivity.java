@@ -23,7 +23,6 @@ import br.com.victor.tradr.R;
 import br.com.victor.tradr.domain.Produto;
 import br.com.victor.tradr.fragments.ProdutoEditFragment;
 import br.com.victor.tradr.fragments.ProdutoFragment;
-import br.com.victor.tradr.fragments.ProdutosFragment;
 import br.com.victor.tradr.util.ImageUtils;
 import victor.lib.fragment.BaseFragment;
 

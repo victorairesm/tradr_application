@@ -37,7 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:text="@string/categoria" />
+                    android:text="@string/estado" />
 
                 <RadioGroup
                     android:id="@+id/radioTipo"
@@ -47,20 +47,20 @@
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/catUsado"
+                        android:id="@+id/estadoUsado"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
                         android:text="@string/usado" />
 
                     <RadioButton
-                        android:id="@+id/catNovo"
+                        android:id="@+id/estadoNovo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/novo" />
 
                     <RadioButton
-                        android:id="@+id/catSemiNovo"
+                        android:id="@+id/estadoSemiNovo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/seminovo" />

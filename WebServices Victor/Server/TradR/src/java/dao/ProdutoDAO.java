@@ -13,7 +13,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -142,7 +141,7 @@ public class ProdutoDAO extends BaseDAO{
         p.setUrlFoto(rs.getString("urlFoto"));
         p.setCategoria(rs.getLong("id_categoria"));
         p.setCpf(rs.getLong("cpf"));
-        p.setData_cadastro(new java.sql.Timestamp(rs.getTimestamp("data_cadastro").getTime()));
+        p.setData_cadastro(rs.getTimestamp("data_cadastro"));
         return p;
     }
 
@@ -154,7 +153,7 @@ public class ProdutoDAO extends BaseDAO{
             if (p.getId() == null) {
                 stmt = conn.prepareStatement("insert into produto (id_categoria,cpf,estado,valor,nome,descricao,urlFoto,data_cadastro) VALUES(?,?,?,?,?,?,?,CURRENT_TIMESTAMP)", Statement.RETURN_GENERATED_KEYS);
             } else {
-                stmt = conn.prepareStatement("update produto set id_categoria=?,cpf=?,estado=?,valor=?,nome=?,descricao=?,urlFoto=?,data_cadastro=CURRENT_TIMESTAMP where id_produto=?");
+                stmt = conn.prepareStatement("update produto set id_categoria=?,cpf=?,estado=?,valor=?,nome=?,descricao=?,urlFoto=?,data_cadastro=? where id_produto=?");
             }
             stmt.setLong(1, p.getCategoria());
             stmt.setLong(2, p.getCpf());
@@ -166,7 +165,8 @@ public class ProdutoDAO extends BaseDAO{
             //stmt.setDate(8, new Date(new java.util.Date().getTime()));
             if (p.getId() != null) {
                 // Update
-                stmt.setLong(8, p.getId());
+                stmt.setTimestamp(8, p.getData_cadastro());
+                stmt.setLong(9, p.getId());
             }
             int count = stmt.executeUpdate();
             if (count == 0) {

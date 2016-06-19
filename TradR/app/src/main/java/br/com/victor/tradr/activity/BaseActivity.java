@@ -24,7 +24,6 @@ import victor.lib.utils.AndroidUtils;
 
 public class BaseActivity extends victor.lib.activity.BaseActivity {
     protected DrawerLayout drawerLayout;
-
     // Configura a Toolbar
     protected void setUpToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

@@ -1,14 +1,12 @@
 package br.com.victor.tradr.domain;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @org.parceler.Parcel
-public class Produto implements Serializable {
+public class Produto {
 
-    private static final long serialVersionUID = 6601006766832473959L;
+    //private static final long serialVersionUID = 6601006766832473959L;
 
     public Long id;
     public Integer categoria;
@@ -21,8 +19,8 @@ public class Produto implements Serializable {
     public Timestamp data;
     // Flag para a action bar de contexto
     public boolean selected;
-    // Está favoritado sem vem do banco de dadosine
-    public boolean marcar;
+    // Está favoritado sem vem do banco de dados
+    //public boolean marcar;
 
     @Override
     public String toString() {

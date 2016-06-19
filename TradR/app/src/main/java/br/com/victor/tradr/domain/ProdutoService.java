@@ -26,8 +26,8 @@ import victor.lib.utils.HttpHelper;
 
 public class ProdutoService {
     private static final String TAG = "ProdutoService";
-    //private static final String URL_BASE = "http://192.168.0.13:8084/rest/produtos";
-    private static final String URL_BASE = "http://10.0.54.249:8080/rest/produtos";
+    private static final String URL_BASE = "http://192.168.0.13:8084/rest/produtos";
+    //private static final String URL_BASE = "http://10.0.54.249:8080/rest/produtos";
     private static final boolean LOG_ON = true;
 
     public static List<Produto> getProdutosByCategoria(Context context, String categoria) throws IOException {
@@ -39,13 +39,12 @@ public class ProdutoService {
         return produtos;
     }
 
-    public static List<Produto> getProdutos() throws IOException {
-        String json = new HttpHelper().doGet(URL_BASE); //obtém o objeto JSON do servidor através de um GET
-
-        //Converte JSON para um List
-        Type listType = new TypeToken<ArrayList<Produto>>() {}.getType();
-        List<Produto> produtos = new Gson().fromJson(json, listType);
-
+    public static List<Produto> getProdutos(Context context) throws IOException {
+        String url = URL_BASE;
+        HttpHelper http = new HttpHelper();
+        http.LOG_ON = true;
+        String json = http.doGet(url);
+        List<Produto> produtos = parserJSON(context, json);
         return produtos;
     }
 

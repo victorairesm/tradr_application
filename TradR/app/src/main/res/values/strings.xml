@@ -57,7 +57,7 @@
     <string name="title_activity_produto">Produto</string>
 
     <!-- EditProduto -->
-    <string name="categoria">Categoria</string>
+    <string name="estado">Estado</string>
     <string name="usado">Usado</string>
     <string name="novo">Novo</string>
     <string name="seminovo">Semi-novo</string>
