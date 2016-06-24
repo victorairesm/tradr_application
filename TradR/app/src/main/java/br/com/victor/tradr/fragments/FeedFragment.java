@@ -72,6 +72,12 @@ public class FeedFragment extends BaseFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        taskProdutos(false);
+    }
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
