@@ -24,12 +24,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
 }
 
 repositories {
     maven {
-        //url "C://Users//victo//Desktop//Projetos//TradR//utils"
-        url "/home/aluno/Projetos/TradR/utils"
+        url "C://Users//victo//Desktop//Projetos//TradR//utils"
+        //url "/home/aluno/Projetos/TradR/utils"
     }
 }
 
@@ -48,4 +52,5 @@ dependencies {
     compile 'org.parceler:parceler:1.0.3'
     compile 'org.parceler:parceler-api:1.0.3'
     compile 'com.android.support:palette-v7:23.2.1'
+    compile 'com.jakewharton:butterknife:7.0.1'
 }

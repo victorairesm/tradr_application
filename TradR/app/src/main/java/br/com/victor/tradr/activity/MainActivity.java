@@ -17,24 +17,9 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setUpToolbar();
-        setupNavDrawer();
-        replaceFragment(new FeedFragment());
-        // FAB Button
-        findViewById(R.id.btAddCarro).setOnClickListener(onClickAddProduto());
-    }
 
-    private View.OnClickListener onClickAddProduto() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Compat
-                Intent intent = new Intent(getActivity(), ProdutoActivity.class);
-                intent.putExtra("editMode", true);
-                //ActivityOptionsCompat opts = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), img, key);
-                ActivityCompat.startActivity(getActivity(), intent, null);
-            }
-        };
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -53,4 +38,13 @@ public class MainActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 }

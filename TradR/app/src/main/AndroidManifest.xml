@@ -39,6 +39,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
+        <activity android:name="br.com.victor.tradr.activity.LoginActivity" android:theme="@style/AppTheme.Dark" />
+        <activity android:name="br.com.victor.tradr.activity.SignupActivity" android:theme="@style/AppTheme.Dark" />
 
     </application>
 

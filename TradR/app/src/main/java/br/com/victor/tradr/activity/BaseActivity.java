@@ -2,6 +2,7 @@ package br.com.victor.tradr.activity;
 
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -112,6 +113,19 @@ public class BaseActivity extends victor.lib.activity.BaseActivity {
     protected void replaceFragment(Fragment frag) {
         //toast("Trocou de fragmento");
         getSupportFragmentManager().beginTransaction().replace(R.id.nav_drawer_container, frag, "TAG").commit();
+    }
+
+    protected View.OnClickListener onClickAddProduto() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Compat
+                Intent intent = new Intent(getActivity(), ProdutoActivity.class);
+                intent.putExtra("editMode", true);
+                //ActivityOptionsCompat opts = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), img, key);
+                ActivityCompat.startActivity(getActivity(), intent, null);
+            }
+        };
     }
 
     @Override
