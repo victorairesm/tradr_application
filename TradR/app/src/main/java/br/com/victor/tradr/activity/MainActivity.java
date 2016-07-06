@@ -20,6 +20,12 @@ public class MainActivity extends BaseActivity {
 
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
+
+        replaceFragment(new FeedFragment());
+        setUpToolbar();
+        setupNavDrawer();
+        // FAB Button
+        findViewById(R.id.btAddCarro).setOnClickListener(onClickAddProduto());
     }
 
     @Override
